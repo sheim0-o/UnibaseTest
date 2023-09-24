@@ -1,0 +1,39 @@
+1) 
+Данный код будет выводить список из 4 строк "Bad: undefined". Причина вывода неверных данных в том, что переменная i была объявлена с помощью var, внутри цикла for вызывается функция setTimeout, но при этом выполняется только после прохождения цикла и выполняется setTimeout 4 раза, где переменная i равна arr.length.
+Чтобы решить эту проблему, необходимо заменить var i на let i. Тогда setTimeout будет принимать копию i c необходимым значением.
+
+
+2) 
+Первый вариант - 
+
+const arr = [10, 12, 15, 21];
+const results = [];
+for (let i = 0; i < arr.length; i++) {
+	setTimeout(function(){
+		results.push(arr[i] > 13 ? `Good: ${arr[i]}` : `Bad: ${arr[i]}`);
+			if (results.length === arr.length) {
+				console.log(results.join(", "));
+		}
+	}, 3000);
+}
+
+Код был изменен не сильно. Был добавлен массив result, куда добавляются результаты вызванных функций setTimeout и проверка на кол-во элементов в массиве. Когда будет добавлен последний массив, будет отображен список результатов.
+
+
+Второй вариант -
+
+const arr = [10, 12, 15, 21];
+
+var promises = arr.map((element,i)  => {
+  return new Promise((resolve, reject) => {
+    setTimeout(function(){
+        resolve(arr[i] > 13 ? `Good: ${arr[i]}` : `Bad: ${arr[i]}`)
+    },3000)
+  });
+});
+
+Promise.all(promises).then(function(results){
+    console.log(results.join(", "))
+});
+
+Код был выполнен через промисы. Через Promise.all выполняются все промисы и ожидается выполнение всех и когда будут выполнены все, тогда будет получен массив results, который уже можно вывести в одну строку.

@@ -1,0 +1,111 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+        <script 
+            type="text/javascript" 
+            src="js/index.js">
+        </script>
+        <link
+            type="text/css" 
+            rel="stylesheet" 
+            href="css/index.css">
+    </head>
+    <body>
+        <button id="modal-btn" onclick="openAndCloseModal()">Открыть форму</button>
+
+        <div class="modal" id="modal-form-add-partner">
+            <div 
+                class="modal__bg-black"
+                onclick="openAndCloseModal()"
+            ></div>
+
+            <form class="modal__form">
+                <h2 class="modal__form-title">Стать партнёром проекта</h2>
+                
+                <div class="modal__main-info">
+                    <div class="modal__main-info-left">
+
+                        <div class="modal__input modal__input-text">
+                            <input name="company_name" type="text" required/>
+                            <span><red-star></red-star>Название организации</span>
+                        </div>
+                        <div class="modal__input modal__input-text">
+                            <input name="phone" type="tel" pattern="^[0-9]{3}[ -][0-9]{2}-[0-9]{3}&" required/>
+                            <span><red-star></red-star>Телефон</span>
+                        </div>
+                        <div class="modal__input modal__input-text">
+                            <input name="email" type="email" required/>
+                            <span><red-star></red-star>E-mail</span>
+                        </div>
+                        
+                    </div>
+
+                    <div class="modal__main-info-right">
+                        <p class="modal__set-logo-title">
+                            <red-star></red-star> Логотип (jpeg, png)</p>
+                            
+                        <div class="modal__set-logo-block">
+                            <div class="modal__get-image-block">
+                                <img id="partner-logo" class="modal__partner-logo" src="./images/no_logo.png">
+                            
+                                <div class="modal__get-image">
+                                    <img src="https://www.svgrepo.com/show/532847/cloud-arrow-down-alt.svg">
+                                    <input class="modal__get-image-input" required type="file" id="image-input" accept=".png, .jpeg">
+                                </div>
+                            </div>
+                            
+                            <div id="delete-logo" class="modal__delete-image" onclick="deleteLogo()">&times;</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal__dropdown-list">
+                    <select name="direction" required>
+                        <option value=""></option>
+                        <option value="1">Экология</option>
+                    </select>
+                    <span><red-star></red-star>Направление</span>
+                </div>
+                
+
+                <div class="modal__input modal__input-link">
+                    <input name="site" type="text"/>
+                    <img src="https://cdn-icons-png.flaticon.com/512/3449/3449752.png"></img>
+                </div>
+                <div class="modal__input modal__input-link">
+                    <input name="vk" type="text" requiredText="vk.com/" oninput="checkRequiredText(this)"/>
+                    <img src="https://cdn-icons-png.flaticon.com/512/733/733583.png"></img>
+                </div>
+                <div class="modal__input modal__input-link">
+                    <input name="ok" type="text" requiredText="ok.com/" oninput="checkRequiredText(this)"/>
+                    <img src="https://cdn-icons-png.flaticon.com/512/889/889125.png"></img>
+                </div>
+                <div class="modal__input modal__input-link">
+                    <input name="facebook" type="text" requiredText="facebook.com/" oninput="checkRequiredText(this)"/>
+                    <img src="https://cdn-icons-png.flaticon.com/512/3128/3128304.png"></img>
+                </div>
+                <div class="modal__input modal__input-link">
+                    <input name="instagram" type="text" requiredText="instagram.com/" oninput="checkRequiredText(this)"/>
+                    <img src="https://cdn-icons-png.flaticon.com/512/174/174855.png"></img>
+                </div>
+                <div class="modal__input modal__input-link">
+                    <input name="youtube" type="text" requiredText="youtube.com/" oninput="checkRequiredText(this)"/>
+                    <img src="https://cdn-icons-png.flaticon.com/512/174/174883.png"></img>
+                </div>
+                <div class="modal__input modal__input-text">
+                    <input name="director" type="text"/>
+                    <span>Руководитель</span>
+                </div>
+
+
+
+                <input class="modal__input-btn modal__input-btn-apply" type="submit"
+                value="Стать партнёром проекта" name="submit-btn"></input>
+                <input class="modal__input-btn modal__input-btn-cancel" type="button"
+                value="Отменить" onclick="openAndCloseModal()"></input>
+
+            </form>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,232 @@
+/* Modal window */
+.modal {
+    position: absolute;
+    top:0;
+    right:0;
+    width: 100%;
+    min-height: calc(100vh + 5vw);
+    display: none;
+}
+/* Modal background */
+.modal__bg-black {
+    background-color: rgba(0, 0, 0, 50%);
+    position: fixed;
+    top:0;
+    right:0;
+    left:0;
+    bottom:0;
+}
+
+
+/* Modal form */
+.modal__form {
+    max-width: clamp(100px, 50vw, 500px);
+    width: 100%;
+    height: min-content;
+    position: absolute;
+    justify-self: center;
+    top: 5vw;
+    margin-bottom: 5vw;
+    
+    display: flex;
+    flex-direction: column;
+
+    border-radius: 10px;
+    background-color: white;
+    padding: 10px 50px 10px 50px;
+}
+.modal__form-title {
+    font-weight: bold;
+    font-size: 1.4em;
+}
+
+/* Modal block with main info */
+.modal__main-info {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.modal__main-info-left {
+    display: flex;
+    flex-direction: column;
+    width: 70%
+}
+.modal__main-info-right {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 30%
+}
+
+/* Modal set logo in right block of main info */
+.modal__set-logo-title {
+    font-size: .7em;
+}
+.modal__set-logo-block {
+    width: 75%;
+    aspect-ratio: 1 / 1;
+    position: relative;
+}
+.modal__get-image-block{
+    overflow: hidden;
+    border-radius: 50%;
+}
+.modal__partner-logo {
+    width: 100%;
+    height: 100%;
+    object-fit:cover;
+    filter: brightness(50%);
+}
+.modal__get-image {
+    position: absolute;
+    width: 60%;
+    height: 80%;
+    
+    left:20%;
+    top:10%;
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.modal__get-image img {
+    width:60%;
+    object-fit:cover;
+    aspect-ratio: 1 / 1;
+    fill: white;
+
+}
+.modal__delete-image {
+    position: absolute;
+    width: 26%;
+    height: 26%;
+    
+    right:0%;
+    top:0%;
+
+    border-radius: 50%;
+    background-color: white;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.6em;
+    cursor: pointer;
+    visibility: hidden;
+}
+.modal__get-image-input {
+    border: none;
+    outline: none;
+    background: none;
+    cursor: pointer;
+    color: transparent;
+    width: 100%;
+}
+.modal__get-image-input::-webkit-file-upload-button {
+    visibility: hidden;
+}
+
+.modal__get-image-input::after {
+    content: 'Выберите файл';
+    color: white;
+    text-align: center;
+    text-decoration-line: underline;
+    left: 0;
+    width: 100%;
+    white-space: pre-line;
+    position: absolute;
+    font-size: .8em;
+}
+
+
+/* Modal inputs and select */
+.modal__input, .modal__dropdown-list {
+	position: relative;
+    margin-bottom: 20px;
+}
+.modal__input input, .modal__dropdown-list select {
+    width: 100%;
+    height: 45px;
+    padding-left: 10px;
+    background: transparent;
+
+	outline: 1px solid #777;
+    font-size: 1em;
+    
+	border:none;
+    border-radius: 5px;
+    box-shadow: none !important;
+}
+/* Modal input text with floating hint */
+.modal__input-text input, .modal__dropdown-list select {
+    padding-top: 15px;
+}
+.modal__input-text span, .modal__dropdown-list span {
+	position: absolute;
+	pointer-events: none;
+	top: 1px;
+	left: 10px;
+    font-size: .8em;
+}
+
+/* Modal input link */
+.modal__input-link input{
+    padding-right: 40px;
+}
+.modal__input-link img {
+    position: absolute;
+	pointer-events: none;
+    padding-top: auto;
+	top: 25%;
+	right: 10px;
+    height: 50%;
+    object-fit:cover;
+    aspect-ratio: 1 / 1;
+}
+
+/* Modal input buttons */
+.modal__input-btn {
+    height: 45px;
+    width: 100%;
+    border-radius: 5px;
+	border:none;
+}
+.modal__input-btn-apply {
+    background: rgb(232,36,108);
+    color: white;
+}
+.modal__input-btn-cancel {
+    background: transparent;
+    color: rgb(60,110,205)
+}
+
+@media (max-width: 700px) {
+    .modal__form {
+        font-size: 2.5vw;
+    }
+    .modal__main-info {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .modal__main-info-left{
+        width: 100%;
+    }
+    .modal__main-info-right{
+        width: 100%;
+    }
+    .modal__input input, .modal__dropdown-list select {
+        height: 8vw;
+    }
+}
+@media (max-width: 400px) {
+    .modal__form {
+        font-size: 3.5vw;
+        padding: 4vw;
+    }
+    .modal__input input, .modal__dropdown-list select {
+        height: 14vw;
+    }
+}
