@@ -171,3 +171,45 @@ class Partner {
         this.director = director;
     }
 }
+
+
+/* Add phone mask */
+function addPhoneMask(element){
+    const input = element.value.replace(/\D/g, '');
+    console.log(input)
+    if (input.length > 0) {
+        let formattedInput = '+7 ';
+        if (input.length == 1) {
+            formattedInput += `(${input.substring(1, 4)}`;
+        }
+        if (input.length > 1) {
+            formattedInput += `(${input.substring(1, 4)}`;
+        }
+        if (input.length > 4) {
+            formattedInput += `) ${input.substring(4, 7)}`;
+        }
+        if (input.length > 7) {
+            formattedInput += `-${input.substring(7, 9)}`;
+        }
+        if (input.length > 9) {
+            formattedInput += `-${input.substring(9, 11)}`;
+        }
+        element.value = formattedInput;
+    }
+}
+function setInitialPhoneValue(element){
+    if(element.value.length==0)
+        element.value="+7 (";
+}
+function formatPhoneNumber(phoneNumber) {
+    const match = phoneNumber.match(/^(\d{0,1})(\d{0,3})(\d{0,3})(\d{0,2})(\d{0,2})$/);
+    if (!match) return '';
+    const [, plus, part1, part2, part3, part4] = match;
+    let formattedNumber = '';
+    if (plus) formattedNumber += '+';
+    if (part1) formattedNumber += `(${part1}`;
+    if (part2) formattedNumber += `) ${part2}`;
+    if (part3) formattedNumber += `-${part3}`;
+    if (part4) formattedNumber += `-${part4}`;
+    return formattedNumber;
+}

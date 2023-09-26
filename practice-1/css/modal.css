@@ -4,7 +4,7 @@
     top:0;
     right:0;
     width: 100%;
-    min-height: calc(100vh + 5vw);
+    min-height: 100vh;
     display: none;
 }
 /* Modal background */
@@ -20,24 +20,28 @@
 
 /* Modal form */
 .modal__form {
-    max-width: clamp(100px, 50vw, 500px);
+    max-width: clamp(100px, 50vw, calc(754px - 196px));
     width: 100%;
     height: min-content;
     position: absolute;
     justify-self: center;
-    top: 5vw;
-    margin-bottom: 5vw;
+    top: 101px;
     
     display: flex;
     flex-direction: column;
 
     border-radius: 10px;
     background-color: white;
-    padding: 10px 50px 10px 50px;
+
+    padding: 53px 98px 53px 98px;
 }
 .modal__form-title {
-    font-weight: bold;
-    font-size: 1.4em;
+    margin: 0;
+    margin-bottom: 35px;
+    line-height: 34px;
+    font-weight: 800;
+    font-size: 28px;
+    font-family: "Montserrat";
 }
 
 /* Modal block with main info */
@@ -49,33 +53,45 @@
 .modal__main-info-left {
     display: flex;
     flex-direction: column;
-    width: 70%
+    width: 362px;
 }
 .modal__main-info-right {
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 30%
+    padding-left: 26px;
 }
 
 /* Modal set logo in right block of main info */
 .modal__set-logo-title {
-    font-size: .7em;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 24px;
+    letter-spacing: 0px;
+    text-align: center;
+    margin-top: 0;
+    margin-bottom: 7px;
 }
 .modal__set-logo-block {
-    width: 75%;
+    width: 175px;
     aspect-ratio: 1 / 1;
     position: relative;
+
 }
 .modal__get-image-block{
     overflow: hidden;
     border-radius: 50%;
-}
-.modal__partner-logo {
+
     width: 100%;
     height: 100%;
-    object-fit:cover;
-    filter: brightness(50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.modal__partner-logo {
+    width: calc(100% - 11.66px);
+    height: calc(100% - 11.66px);
+    object-fit:fill;
 }
 .modal__get-image {
     position: absolute;
@@ -91,28 +107,26 @@
     align-items: center;
 }
 .modal__get-image img {
-    width:60%;
+    width:29.17px;
     object-fit:cover;
     aspect-ratio: 1 / 1;
-    fill: white;
-
 }
 .modal__delete-image {
     position: absolute;
-    width: 26%;
-    height: 26%;
+    width: 36.17px;
+    aspect-ratio: 1 / 1;
+
+    margin-top: 15.17px;
+    margin-right: 8.17px;
     
     right:0%;
     top:0%;
+    object-fit:scale-down;
 
     border-radius: 50%;
     background-color: white;
-    
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 1.6em;
     cursor: pointer;
+
     visibility: hidden;
 }
 .modal__get-image-input {
@@ -122,11 +136,13 @@
     cursor: pointer;
     color: transparent;
     width: 100%;
+
+    width: 80.5px;
+    height: 56px;
 }
 .modal__get-image-input::-webkit-file-upload-button {
     visibility: hidden;
 }
-
 .modal__get-image-input::after {
     content: 'Выберите файл';
     color: white;
@@ -137,77 +153,132 @@
     white-space: pre-line;
     position: absolute;
     font-size: .8em;
+
+    font-family: "PT Sans";
+    font-size: 19px;
+    font-weight: 400;
+    line-height: 28px;
+    letter-spacing: 0px;
+    text-align: center;
 }
 
 
 /* Modal inputs and select */
 .modal__input, .modal__dropdown-list {
+    width: 100%;
 	position: relative;
-    margin-bottom: 20px;
+    margin-bottom: 32px;
 }
 .modal__input input, .modal__dropdown-list select {
     width: 100%;
-    height: 45px;
-    padding-left: 10px;
+    height: 56px;
+    
+    padding-left: 16px;
     background: transparent;
 
-	outline: 1px solid #777;
+	outline: 1px solid #D6DADE;
     font-size: 1em;
     
 	border:none;
-    border-radius: 5px;
+    border-radius: 1px;
     box-shadow: none !important;
+
+    color: #0C1014;
+    font-size: 16px;
+    font-family: "PT Sans";
+    font-weight: 400;
+    line-height: 24px;
+    word-wrap: break-word;
 }
-/* Modal input text with floating hint */
-.modal__input-text input, .modal__dropdown-list select {
-    padding-top: 15px;
+.modal__input input:hover, .modal__dropdown-list select:hover {
+	outline: 1px solid #bdc0c4;
 }
-.modal__input-text span, .modal__dropdown-list span {
+/* Modal input with floating hint */
+.modal__input-with-hint input, .modal__dropdown-list select {
+    padding-top:22px;
+    padding-bottom:8px;
+}
+.modal__input-with-hint span, .modal__dropdown-list span {
 	position: absolute;
 	pointer-events: none;
-	top: 1px;
-	left: 10px;
+	top: 8px;
+	left: 16px;
     font-size: .8em;
 }
 
 /* Modal input link */
-.modal__input-link input{
-    padding-right: 40px;
+.modal__input-with-ico input, .modal__input-with-ico select{
+    padding-right: 36px;
 }
-.modal__input-link img {
+.modal__input-with-ico img {
+    width: 18px;
     position: absolute;
 	pointer-events: none;
     padding-top: auto;
-	top: 25%;
-	right: 10px;
-    height: 50%;
-    object-fit:cover;
+	top: 19px;
+	right: 16px;
+    object-fit:scale-down;
     aspect-ratio: 1 / 1;
 }
 
+
+
 /* Modal input buttons */
 .modal__input-btn {
-    height: 45px;
+    height: 48px;
     width: 100%;
     border-radius: 5px;
 	border:none;
 }
 .modal__input-btn-apply {
     background: rgb(232,36,108);
-    color: white;
+    color: #FFFFFF;
+
+    font-weight: 400;
+    line-height: 18px;
+    letter-spacing: 0px;
+    text-align: center;
+    
+    margin-top: 18px;
+    margin-bottom: 15px;
+
+    /* font-family: "Lato";
+    font-size: 16px;
+    font-weight: 600; */
 }
 .modal__input-btn-cancel {
     background: transparent;
-    color: rgb(60,110,205)
+    color: #0848C0;
+    height: min-content;
+
+    line-height: 24px;
+    word-wrap: break-word;
 }
 
-@media (max-width: 700px) {
+
+/* Remove arrow in select */
+.modal__dropdown-list select {
+    -webkit-appearance:none !important;
+   -moz-appearance:none;
+   -ms-appearance:none;
+   appearance:none !important;
+}
+.modal__dropdown-list select::-ms-expand {
+    display: none;
+}
+
+
+.modal__hint{
+    color: #6A6E72;
+}
+
+@media (max-width: 800px) {
     .modal__form {
         font-size: 2.5vw;
     }
     .modal__main-info {
         display: flex;
-        flex-direction: column;
+        flex-direction: column-reverse;
         justify-content: center;
         align-items: center;
     }
@@ -215,18 +286,73 @@
         width: 100%;
     }
     .modal__main-info-right{
+        padding: 0 0 32px 0;
         width: 100%;
     }
     .modal__input input, .modal__dropdown-list select {
         height: 8vw;
     }
 }
-@media (max-width: 400px) {
+@media (max-width: 600px) {
     .modal__form {
-        font-size: 3.5vw;
-        padding: 4vw;
+        padding: 10vw;
+    }
+    .modal__form-title {
+        margin: 0;
+        margin-bottom: 5vw;
+        font-size: 5vw;
+        text-align: center;
+        line-height: normal;
+    }
+    .modal__set-logo-block{
+        height: clamp(150px, 30vw, 175px);
+        width: clamp(150px, 30vw, 175px);
     }
     .modal__input input, .modal__dropdown-list select {
-        height: 14vw;
+        height: 12vw;
+        font-size: 4vw;
+        padding-left: 2vw;
+    }
+    .modal__dropdown-list select {
+        padding: 10px 0 0 2vw;
+    }
+    .modal__input-with-ico img {
+        width: 4vw;
+        top: 4vw;
+        right: 2vw;
+    }
+    .modal__input-with-hint span, .modal__dropdown-list span {
+        top:1vw;
+        left: 1vw;
+        font-size: 3vw;
+    }
+    .modal__input-btn {
+        height: min-content;
+        min-height: 48px;
+        border:none;
+        text-wrap:wrap;
+    }
+}
+@media (max-width: 300px) {
+    .modal__input input, .modal__dropdown-list select {
+        height: 18vw;
+        font-size: 7vw;
+        padding-left: 2vw;
+    }
+    .modal__dropdown-list select {
+        padding: 10px 0 0 2vw;
+    }
+    .modal__input-with-hint span, .modal__dropdown-list span {
+        top:1vw;
+        left: 1vw;
+        font-size: 4vw;
+    }
+    .modal__input-with-ico img {
+        width: 5vw;
+        top: 6vw;
+        right: 2vw;
+    }
+    .modal__input-with-ico input, .modal__input-with-ico select{
+        padding-right: 26px;
     }
 }
