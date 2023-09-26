@@ -53,17 +53,24 @@ window.addEventListener('load', function () {
 })
 
 // Открытие и закрытие модального окна
-function openAndCloseModal(){
-    if (modal.classList.contains('modal_active')) 
-    {
-        modal.classList.remove("modal_active");
-        modal.style.display='none';
+function openAndCloseModal(element){
+    let parentModal;
+    if(typeof element != "string")
+        parentModal = element.closest(".modal");
+    else
+        parentModal = document.getElementById(element);
 
-        setInitialDataInForm(modal, fiLogo);
+    if (parentModal.classList.contains('modal_active')) 
+    {
+        parentModal.classList.remove("modal_active");
+        parentModal.style.display='none';
+
+        if(parentModal==modal)
+            setInitialDataInForm(modal, fiLogo);
     }
     else {
-        modal.classList.add("modal_active");
-        modal.style.display='grid';
+        parentModal.classList.add("modal_active");
+        parentModal.style.display='grid';
     }
 }
 
@@ -73,6 +80,7 @@ function deleteLogo(){
     logoInput.value = '';
     fiLogo.src = noLogoImage;
     deleteLogoElement.style.visibility = 'hidden';
+    fiLogo.classList.remove("modal__partner-logo_selected");
 }
 
 
@@ -108,12 +116,23 @@ function selectImage(e){
 
     reader.onload = function (evt) {
         partnerLogoData = evt.target.result;
-        fiLogo.src = partnerLogoData;
-        deleteLogoElement.style.visibility = 'visible';
+
+        openAndCloseModal('preview-import-image');
+        let previewImgBlock = document.getElementById('preview-import-image');
+        let previewImg = previewImgBlock.getElementsByClassName("modal__preview-import-image-block-img")[0];
+        previewImg.src = partnerLogoData;
     };
 
     reader.readAsDataURL(file);
 }
+
+function addFromPreviewLogo(element){
+    openAndCloseModal(element);
+    fiLogo.src = partnerLogoData;
+    fiLogo.classList.add("modal__partner-logo_selected")
+    deleteLogoElement.style.visibility = 'visible';
+}
+
 
 // Инициализация формы
 function setInitialDataInForm(){

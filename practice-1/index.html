@@ -26,13 +26,27 @@
     -->
     </head>
     <body>
-        <button id="modal-btn" onclick="openAndCloseModal()">Открыть форму</button>
+        <button id="modal-btn" onclick="openAndCloseModal('modal-form-add-partner')">Открыть форму</button>
 
         <div class="modal" id="modal-form-add-partner">
             <div 
                 class="modal__bg-black"
-                onclick="openAndCloseModal()"
+                onclick="openAndCloseModal(this)"ы
             ></div>
+
+            <div id="preview-import-image" class="modal">
+                <div class="modal__bg-black" style="z-index: 1;"></div>
+                <div class="modal__preview-import-image-block">
+                    <div class="modal__preview-import-image-block-title">Подтвердить выбор?</div>
+                    <img class="modal__preview-import-image-block-img" src="./images/no_logo.png">
+                    <div class="modal__preview-import-image-btns">
+                        <button class="modal__input-btn modal__input-btn-outlined modal__preview-import-image-btn" 
+                        onclick="openAndCloseModal(this)">Отменить</button>
+                        <button class="modal__input-btn modal__input-btn-filled modal__preview-import-image-btn" 
+                        onclick="addFromPreviewLogo(this)">Принять</button>
+                    </div>
+                </div>
+            </div>
 
             <form class="modal__form">
                 <h2 class="modal__form-title">Стать партнёром проекта</h2>
@@ -121,9 +135,9 @@
 
 
 
-                <input class="modal__input-btn modal__input-btn-apply" type="submit"
+                <input class="modal__input-btn modal__input-btn-filled" type="submit"
                 value="Стать партнёром проекта" name="submit-btn"></input>
-                <input class="modal__input-btn modal__input-btn-cancel" type="button"
+                <input class="modal__input-btn modal__input-btn-text" type="button"
                 value="Отменить" onclick="openAndCloseModal()"></input>
 
             </form>
